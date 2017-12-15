@@ -5,7 +5,7 @@ import {UserService} from '../../shared/services/user.service';
 import {User} from '../../shared/services/models/user.model';
 import {Message} from '../../shared/services/models/message.model';
 import {AuthService} from '../../shared/services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'hm-login',
@@ -19,19 +19,31 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.message = new Message('danger', '');
+
+    this.route.queryParams
+      .subscribe((params: Params) => {
+        if (params['nowCanLogin']) {
+          this.ShowMessage({
+            type: 'success',
+            text: 'Now you can login!'
+          });
+        }
+      });
+      
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 
-  private ShowMessage (text: string, type: string = 'danger'){
-    this.message = new Message(type, text);
+  private ShowMessage (message: Message) {
+    this.message = message;
     window.setTimeout(() => {
       this.message.text = '';
     }, 5000);
@@ -49,10 +61,17 @@ export class LoginComponent implements OnInit {
             this.authService.login();
            // this.router.navigate(['']);
           }else {
-            this.ShowMessage('Wrong password');
+            this.ShowMessage({
+              type: 'danger',
+              text: 'Wrong password'}
+              );
           }
         }else {
-          this.ShowMessage('We can\'t find user with this email');
+          this.ShowMessage(
+            {
+              type: 'danger',
+              text: 'We can\'t find user with this email'
+            });
         }
       } );
   }
