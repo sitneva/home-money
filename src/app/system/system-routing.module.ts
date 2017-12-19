@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
-import {Router, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
-import {SystemModule} from './system.module';
 import {SystemComponent} from './system.component';
 import {BillPageComponent} from './bill-page/bill-page.component';
 import {HistoryPageComponent} from './history-page/history-page.component';
@@ -15,10 +14,12 @@ const routes: Routes = [
     {path: 'planning', component: PlanningPageComponent},
     {path: 'records', component: RecordsPageComponent}
   ]}
+
 ]
 
 @NgModule ({
-  imports: [RouterModule.forChild(routes)]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 
 export class SystemRoutingModule {}

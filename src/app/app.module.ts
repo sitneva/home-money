@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AuthModule} from './auth/auth.module';
-import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './shared/services/user.service';
 import {AuthService} from './shared/services/auth.service';
 import {SystemModule} from './system/system.module';
+import {SystemRoutingModule} from './system/system-routing.module';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import {SystemModule} from './system/system.module';
     HttpModule,
     AuthModule,
     AppRoutingModule,
-    SystemModule
+    SystemModule,
+    SystemRoutingModule
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           });
         }
       });
-      
+
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
             this.message.text = '';
             window.localStorage.setItem('user', JSON.stringify(user));
             this.authService.login();
-           // this.router.navigate(['']);
+            this.router.navigate(['/system', 'bill']);
           }else {
             this.ShowMessage({
               type: 'danger',
