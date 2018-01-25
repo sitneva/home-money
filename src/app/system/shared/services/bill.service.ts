@@ -5,14 +5,16 @@ import 'rxjs/add/operator/map';
 import { Response } from '@angular/http';
 
 import {Bill} from '../models/bill.model';
+import {BaseApi} from '../core/base-api';
 
 @Injectable()
-export class BillService {
-  constructor(private http: Http) {}
+export class BillService extends BaseApi {
+  constructor(public http: Http) {
+    super(http);
+  }
 
   getBill(): Observable<Bill> {
-    return this.http.get('http://localhost:3000/bill')
-      .map((response: Response) => response.json());
+    return this.get('bill');
   }
 
   getCurrency(base: string = 'USD'): Observable<any> {
