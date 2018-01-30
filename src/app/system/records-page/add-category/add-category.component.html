@@ -7,19 +7,19 @@
   <div class="card-block">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group"
-      [ngClass] = "{'has-error': cname.invalid && cname.touched}">
+      [ngClass] = "{'has-error': name.invalid && name.touched}">
         <label class="control-label" for="category-name">Введите название</label>
         <input
           type="text"
           id="category-name"
           class="form-control"
           required
-          #cname="ngModel"
-          name="cname"
+          #name="ngModel"
+          name="name"
           ngModel
         >
         <span
-          *ngIf="cname.invalid && cname.touched"
+          *ngIf="name.invalid && name.touched"
           class="form-help-text">
           Название категории не может быть пустым
         </span>

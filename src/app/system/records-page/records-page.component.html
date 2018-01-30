@@ -4,7 +4,9 @@
   </h3>
 </div>
 
-<section class="section">
+<section class="section text-center" *ngIf="!isLoaded">Loading...</section>
+
+<section class="section" *ngIf="isLoaded">
   <div class="row">
     <div class="col-md-6">
      <hm-add-event></hm-add-event>
@@ -14,6 +16,9 @@
     </div>
   </div>
   <div class="col-md-6">
-    <hm-edit-category></hm-edit-category>
+    <hm-edit-category
+      [categories]="categories"
+      (OnCategoryEdit) = "categoryWasEdited($event)"
+    ></hm-edit-category>
   </div>
 </section>

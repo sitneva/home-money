@@ -17,12 +17,12 @@ export class AddCategoryComponent {
 
 
   onSubmit(form: NgForm) {
-    const {cname} = form.value;
+    const {name} = form.value;
     let {capasity} = form.value;
     if (capasity < 0 ) {
        capasity *= -1;
     }
-    const category = new Category(cname, capasity);
+    const category = new Category(name, capasity);
     this.categoriesService.addCategory(category)
       .subscribe((categ) => {
         console.log(categ);
