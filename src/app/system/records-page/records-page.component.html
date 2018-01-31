@@ -9,10 +9,14 @@
 <section class="section" *ngIf="isLoaded">
   <div class="row">
     <div class="col-md-6">
-     <hm-add-event></hm-add-event>
+     <hm-add-event
+       [categories]="categories"
+     ></hm-add-event>
     </div>
     <div class="col-md-6">
-      <hm-add-category (OnCategoryAdd) = "newCategoryAdded($event)"></hm-add-category>
+      <hm-add-category
+        (OnCategoryAdd) = "newCategoryAdded($event)"
+      ></hm-add-category>
     </div>
   </div>
   <div class="col-md-6">
