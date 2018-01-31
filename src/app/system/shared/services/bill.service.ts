@@ -19,6 +19,7 @@ export class BillService extends BaseApi {
 
   getCurrency(base: string = 'RUB'): Observable<any> {
     return this.http.get(`http://api.fixer.io/latest?base=${base}`)
+    //return this.http.get(`https://api.privatbank.ua/p24api/exchange_rates?`})
       .map((response: Response) => response.json());
   }
 
