@@ -8,7 +8,7 @@
     }
   ],
   "bill": {
-    "value": 89800,
+    "value": 500,
     "currency": "RUB"
   },
   "categories": [
@@ -76,67 +76,11 @@
     },
     {
       "type": "outcome",
-      "amount": 200,
-      "category": 4,
-      "date": "31.01.182018 12:42:36",
-      "description": "test",
+      "amount": 500,
+      "category": 3,
+      "date": "31.01.182018 19:07:51",
+      "description": "то",
       "id": 6
-    },
-    {
-      "type": "income",
-      "amount": 2000000,
-      "category": 1,
-      "date": "31.01.182018 14:24:36",
-      "description": "test",
-      "id": 7
-    },
-    {
-      "type": "income",
-      "amount": 4000000,
-      "category": 1,
-      "date": "31.01.182018 14:25:01",
-      "description": "fsd",
-      "id": 8
-    },
-    {
-      "type": "outcome",
-      "amount": 6000000,
-      "category": 1,
-      "date": "31.01.182018 14:29:12",
-      "description": "вап",
-      "id": 9
-    },
-    {
-      "type": "outcome",
-      "amount": 2000,
-      "category": 1,
-      "date": "31.01.182018 14:29:32",
-      "description": "ке",
-      "id": 10
-    },
-    {
-      "type": "outcome",
-      "amount": 2000,
-      "category": 1,
-      "date": "31.01.182018 14:29:55",
-      "description": "фыв",
-      "id": 11
-    },
-    {
-      "type": "outcome",
-      "amount": 5000,
-      "category": 1,
-      "date": "31.01.182018 14:33:20",
-      "description": "g",
-      "id": 12
-    },
-    {
-      "type": "outcome",
-      "amount": 1000,
-      "category": 1,
-      "date": "31.01.182018 14:53:41",
-      "description": "dg",
-      "id": 13
     }
   ]
 }

@@ -1,4 +1,3 @@
-
 import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
@@ -14,6 +13,9 @@ export class EventsService extends BaseApi {
 
   addEvent(event: HMEvent): Observable<HMEvent> {
     return this.post('events', event);
+  }
+  getEvents(): Observable<HMEvent[]> {
+    return this.get('events');
   }
 
 }
