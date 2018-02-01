@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { AppComponent } from './app.component';
 import {AuthModule} from './auth/auth.module';
@@ -21,7 +23,8 @@ import {SystemRoutingModule} from './system/system-routing.module';
     AuthModule,
     AppRoutingModule,
     SystemModule,
-    SystemRoutingModule
+    SystemRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]

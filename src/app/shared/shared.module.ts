@@ -1,14 +1,17 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule
   ],
   exports: [
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule
   ]
 })
 
