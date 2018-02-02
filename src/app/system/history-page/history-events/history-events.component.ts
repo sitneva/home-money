@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HMEvent} from "../../shared/models/event.model";
+import {HMEvent} from '../../shared/models/event.model';
 
 @Component({
   selector: 'hm-history-events',
@@ -10,6 +10,9 @@ export class HistoryEventsComponent implements OnInit {
 
   @Input() categories;
   @Input() events;
+
+  searchValue = '';
+  searchField = 'сумма';
 
   constructor() {
   }
@@ -30,6 +33,18 @@ export class HistoryEventsComponent implements OnInit {
       'label-danger': e.type === 'outcome',
       'label-success': e.type === 'income',
     };
+  }
+
+  changeCriteria(field: string) {
+    const namesMap = {
+      amount: 'Cумма',
+      date: 'Дата',
+      category: 'Категория',
+      type: 'Тип'
+    };
+    this.searchValue = '';
+    this.searchField = field;
+
   }
 
 }

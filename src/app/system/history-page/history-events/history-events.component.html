@@ -8,18 +8,22 @@
           </div>
           <div class="form-inline pull-right m-r-2">
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Поиск...">
+              <input
+                type="text"
+                class="form-control"
+                [placeholder]="searchField"
+                [(ngModel)]="searchValue"
+              >
             </div>
-            <div class="btn-group">
+            <div class="btn-group" hmDropdown>
               <button type="button" class="btn btn-secondary dropdown-toggle ">
                 Параметр
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" (click)="changeCriteria('amount')" >Cумма</a>
+                <a class="dropdown-item" (click)="changeCriteria('date')" >Дата</a>
+                <a class="dropdown-item" (click)="changeCriteria('category')" >Категория</a>
+                <a class="dropdown-item" (click)="changeCriteria('type')" >Тип</a>
               </div>
             </div>
           </div>
@@ -37,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let e of events; let idx = index ">
+            <tr *ngFor="let e of events | hmFilter:searchValue:searchField; let idx = index ">
               <th scope="row">{{idx + 1}}</th>
               <td>{{e.amount}}</td>
               <td>{{e.date | hmMoment:'YYYY-MM-DD HH:mm:ss'}}</td>
