@@ -37,25 +37,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>44 444</td>
-              <td>12.12.2017</td>
-              <td>Товары</td>
+            <tr *ngFor="let e of events; let idx = index ">
+              <th scope="row">{{idx + 1}}</th>
+              <td>{{e.amount}}</td>
+              <td>{{e.date | hmMoment:'YYYY-MM-DD HH:mm:ss'}}</td>
+              <td>{{e.catName}}</td>
               <td>
-                <span class="label label-danger">Расход</span>
-              </td>
-              <td class="text-lg-center">
-                <a href="#" class="btn btn-primary-outline">Открыть</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>33 333</td>
-              <td>12.12.2017</td>
-              <td>Отдых</td>
-              <td>
-                <span class="label label-success">Доход</span>
+                <span [ngClass]="getClassName(e)" *ngIf="e.type === 'outcome'">Расход</span>
+                <span [ngClass]="getClassName(e)" *ngIf="e.type === 'income'">Доход</span>
+
               </td>
               <td class="text-lg-center">
                 <a href="#" class="btn btn-primary-outline">Открыть</a>

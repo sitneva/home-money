@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {HMEvent} from "../../shared/models/event.model";
 
 @Component({
   selector: 'hm-history-events',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryEventsComponent implements OnInit {
 
-  constructor() { }
+  @Input() categories;
+  @Input() events;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.setCatNates();
+  }
+
+  setCatNates() {
+    this.events.forEach((e) => {
+      e.catName = this.categories.find(c => c.id === e.category).name;
+    });
+  }
+
+  getClassName(e: HMEvent) {
+    return {
+      'label': true,
+      'label-danger': e.type === 'outcome',
+      'label-success': e.type === 'income',
+    };
   }
 
 }

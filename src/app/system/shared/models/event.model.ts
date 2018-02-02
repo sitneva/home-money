@@ -5,7 +5,8 @@ export class HMEvent {
     public category: number,
     public date: string,
     public description: string,
-    public id?: number
+    public id?: number,
+    public catName?: string
   ) {}
 }
 

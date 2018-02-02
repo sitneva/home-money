@@ -6,7 +6,7 @@
 <div *ngIf="!isLoaded" class="text-center">Loading...</div>
 <div *ngIf="isLoaded">
   <hm-history-chart  [data]="chartData"></hm-history-chart>
-  <hm-history-events></hm-history-events>
+  <hm-history-events [categories]="categories" [events]="events"></hm-history-events>
   <hm-history-filter></hm-history-filter>
   <hm-history-detail></hm-history-detail>
 </div>
