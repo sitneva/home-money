@@ -12,7 +12,8 @@ export class HistoryEventsComponent implements OnInit {
   @Input() events;
 
   searchValue = '';
-  searchField = 'сумма';
+  searchField = 'amount';
+  searchPlaceHolder = 'Cумма';
 
   constructor() {
   }
@@ -42,7 +43,7 @@ export class HistoryEventsComponent implements OnInit {
       category: 'Категория',
       type: 'Тип'
     };
-    this.searchValue = '';
+    this.searchPlaceHolder = namesMap[field];
     this.searchField = field;
 
   }
