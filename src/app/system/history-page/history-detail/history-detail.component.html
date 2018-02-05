@@ -2,7 +2,7 @@
 <div *ngIf="isLoaded">
 <div class="title-block">
   <h3 class="title">
-    <a href="#"><i class="fa fa-arrow-left"></i></a>
+    <a [routerLink]="['/system/history']"><i class="fa fa-arrow-left"></i></a>
     Страница записи № {{currentEvent.id}}
     <span class="sparkline bar"></span>
   </h3>
@@ -19,8 +19,9 @@
         </div>
         <div class="card-block">
           <ul>
-            <li>Сумма: <strong>{{currentEvent.amount}}</strong></li>
+            <li>Сумма: <strong>{{currentEvent.amount | number:'1.2'}}</strong></li>
             <li>Категория: <strong>{{catName}}</strong></li>
+            <li>Кovvtynfhbq: <strong>{{currentEvent.description}}</strong></li>
           </ul>
         </div>
         <div class="card-footer">{{currentEvent.date | hmMoment:'YYYY-MM-DD HH:mm:ss'}}</div>

@@ -28,26 +28,22 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
                private categoriesService: CategoriesService) { }
 
   ngOnInit() {
-    this.route.params
-      .subscribe((params: Params) => {
-        this.paramId = params['id'];
+    this.sub1 = this.route.params
+      .mergeMap((params: Params) => this.eventService.getEventById(params['id']))
+      .mergeMap ((event: HMEvent) => {
+        this.currentEvent = event;
+        return this.categoriesService.getCategoryById(event.category);
+    })
+      .subscribe((category: Category) => {
+        this.catName = category.name;
+        this.isLoaded = true;
+        this.getCurrentEventInfo();
       });
 
-    this.sub1 = Observable.combineLatest(
-      this.categoriesService.getCategories(),
-      this.eventService.getEvents()
-    ).subscribe((data: [Category[], HMEvent[]]) => {
-        this.categories = data[0];
-        this.events = data[1];
-        this.isLoaded = true;
-        this.getCurrentEventInfo(this.paramId);
-      }
-    );
 
   }
 
-  getCurrentEventInfo (paramId: number): void {
-    this.currentEvent = this.events[paramId];
+  getCurrentEventInfo (): void {
     this.className = this.currentEvent.type === 'income' ? 'success' : 'danger';
 
     this.events.forEach((e) => {
