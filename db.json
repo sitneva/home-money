@@ -92,46 +92,6 @@
     },
     {
       "type": "outcome",
-      "amount": 500,
-      "category": 3,
-      "date": "31.01.182018 19:07:51",
-      "description": "то",
-      "id": 6
-    },
-    {
-      "type": "outcome",
-      "amount": 150,
-      "category": 5,
-      "date": "01.02.182018 18:21:14",
-      "description": "плитка",
-      "id": 7
-    },
-    {
-      "type": "income",
-      "amount": 40000,
-      "category": 1,
-      "date": "01.02.182018 18:25:18",
-      "description": "Зп",
-      "id": 8
-    },
-    {
-      "type": "outcome",
-      "amount": 100,
-      "category": 5,
-      "date": "05.02.182018 17:50:49",
-      "description": "Тест2",
-      "id": 9
-    },
-    {
-      "type": "outcome",
-      "amount": 1,
-      "category": 1,
-      "date": "05.02.182018 17:50:55",
-      "description": " ",
-      "id": 10
-    },
-    {
-      "type": "outcome",
       "amount": 123,
       "category": 1,
       "date": "05.02.2018 17:56:16",
