@@ -1,13 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CategoriesService} from "../shared/services/categories.service";
-import {EventsService} from "../shared/services/events.service";
-import {Category} from "../shared/models/category.model";
-import {HMEvent} from "../shared/models/event.model";
-import {Observable} from "rxjs/Observable";
-import * as moment from "moment";
+import {CategoriesService} from '../shared/services/categories.service';
+import {EventsService} from '../shared/services/events.service';
+import {Category} from '../shared/models/category.model';
+import {HMEvent} from '../shared/models/event.model';
+import {Observable} from 'rxjs/Observable';
+import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
-import {Subscription} from "rxjs/Subscription";
-import {forEach} from "@angular/router/src/utils/collection";
+import {Subscription} from 'rxjs/Subscription';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'hm-history-page',
@@ -19,6 +19,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   chartData = [];
   categories: Category[] = [];
   events: HMEvent[] = [];
+  filteredEvents: HMEvent[] = [];
 
   isLoaded = false;
   isFilterVisible = false;
@@ -35,18 +36,19 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     ).subscribe((data: [Category[], HMEvent[]]) => {
         this.categories = data[0];
         this.events = data[1];
-        this.CalculateChartData();
+        this.setOriginalEvents();
+        this.calculateChartData();
         this.isLoaded = true;
         //console.log(this.chartData);
       }
     );
   }
 
-  CalculateChartData(): void {
+  calculateChartData(): void {
     this.chartData = [];
 
     this.categories.forEach((cat) => {
-      const catEvents = this.events.filter(e => e.category === cat.id && e.type === 'outcome');
+      const catEvents = this.filteredEvents.filter(e => e.category === cat.id && e.type === 'outcome');
       this.chartData.push({
         'name': cat.name,
         'value': catEvents.reduce((total, e) => {
@@ -61,16 +63,40 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     this.isFilterVisible = dir;
   }
 
+  private setOriginalEvents() {
+    this.filteredEvents = this.events.slice();
+  }
+
   onFilter() {
     this.toggleFilterVisibility(true);
   }
 
   onFilterCancel() {
     this.toggleFilterVisibility(false);
+    this.setOriginalEvents();
+    this.calculateChartData();
   }
 
   onFilterApply(filterData) {
-    console.log(filterData);
+    this.toggleFilterVisibility(false);
+    this.setOriginalEvents();
+
+    const startPeriod = moment().startOf(filterData.period).startOf('d');
+    const endPeriod = moment().endOf(filterData.period).endOf('d');
+
+    this.filteredEvents = this.filteredEvents
+      .filter((e) => {
+        return filterData.types.indexOf(e.type) !== -1;
+      })
+      .filter((e) => {
+        return filterData.categories.indexOf(e.category.toString()) !== -1;
+      })
+      .filter((e) => {
+        const momentDate = moment(e.date, 'DD.MM.YYYY HH.mm.ss');
+        return momentDate.isBetween(startPeriod, endPeriod);
+      });
+
+    this.calculateChartData();
   }
 
   ngOnDestroy() {

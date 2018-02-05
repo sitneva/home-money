@@ -11,7 +11,7 @@
 <div *ngIf="!isLoaded" class="text-center">Loading...</div>
 <div *ngIf="isLoaded">
   <hm-history-chart  [data]="chartData"></hm-history-chart>
-  <hm-history-events [categories]="categories" [events]="events"></hm-history-events>
+  <hm-history-events [categories]="categories" [events]="filteredEvents"></hm-history-events>
   <div *ngIf="isFilterVisible">
     <hm-history-filter
       (onFilterCancel)="onFilterCancel()"

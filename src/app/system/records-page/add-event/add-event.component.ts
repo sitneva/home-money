@@ -46,7 +46,7 @@ export class AddEventComponent implements OnInit, OnDestroy {
     }
 
     const event = new HMEvent(
-      type, amount, +category, moment().format('DD.MM.YYY HH:mm:ss'), description
+      type, amount, +category, moment().format('DD.MM.YYYY HH:mm:ss'), description
     );
 
     this.sub1 = this.billService.getBill()

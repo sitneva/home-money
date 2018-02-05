@@ -44,7 +44,7 @@
             <tr *ngFor="let e of events | hmFilter:searchValue:searchField; let idx = index ">
               <th scope="row">{{idx + 1}}</th>
               <td>{{e.amount}}</td>
-              <td>{{e.date | hmMoment:'YYYY-MM-DD HH:mm:ss'}}</td>
+              <td>{{e.date | hmMoment:'DD.MM.YYYY HH:mm:ss'}}</td>
               <td>{{e.catName}}</td>
               <td>
                 <span [ngClass]="getClassName(e)" *ngIf="e.type === 'outcome'">Расход</span>

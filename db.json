@@ -14,7 +14,7 @@
     }
   ],
   "bill": {
-    "value": 40150,
+    "value": 49626,
     "currency": "UAH"
   },
   "categories": [
@@ -42,6 +42,11 @@
       "name": "Ремонт",
       "capacity": 20000,
       "id": 5
+    },
+    {
+      "name": "dg",
+      "capacity": 1,
+      "id": 6
     }
   ],
   "events": [
@@ -108,6 +113,46 @@
       "date": "01.02.182018 18:25:18",
       "description": "Зп",
       "id": 8
+    },
+    {
+      "type": "outcome",
+      "amount": 100,
+      "category": 5,
+      "date": "05.02.182018 17:50:49",
+      "description": "Тест2",
+      "id": 9
+    },
+    {
+      "type": "outcome",
+      "amount": 1,
+      "category": 1,
+      "date": "05.02.182018 17:50:55",
+      "description": " ",
+      "id": 10
+    },
+    {
+      "type": "outcome",
+      "amount": 123,
+      "category": 1,
+      "date": "05.02.2018 17:56:16",
+      "description": "www",
+      "id": 11
+    },
+    {
+      "type": "income",
+      "amount": 10000,
+      "category": 1,
+      "date": "05.02.2018 18:00:17",
+      "description": "зп 2",
+      "id": 12
+    },
+    {
+      "type": "outcome",
+      "amount": 300,
+      "category": 3,
+      "date": "05.02.2018 18:00:43",
+      "description": "масло",
+      "id": 13
     }
   ]
 }
