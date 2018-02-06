@@ -4,7 +4,7 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import {User} from './models/user.model';
+import {User} from '../models/user.model';
 import {BaseApi} from '../../system/shared/core/base-api';
 
 @Injectable()

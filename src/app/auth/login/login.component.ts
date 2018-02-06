@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {UserService} from '../../shared/services/user.service';
-import {User} from '../../shared/services/models/user.model';
-import {Message} from '../../shared/services/models/message.model';
+import {User} from '../../shared/models/user.model';
+import {Message} from '../../shared/models/message.model';
 import {AuthService} from '../../shared/services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
@@ -32,6 +32,11 @@ export class LoginComponent implements OnInit {
           this.ShowMessage({
             type: 'success',
             text: 'Now you can login!'
+          });
+        } else if (params ['accessDenied']) {
+          this.ShowMessage({
+            type: 'warning',
+            text: 'You need to be logged in!'
           });
         }
       });

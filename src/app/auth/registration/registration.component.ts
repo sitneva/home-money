@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
 import {UserService} from '../../shared/services/user.service';
-import {User} from '../../shared/services/models/user.model';
+import {User} from '../../shared/models/user.model';
 //import Any = jasmine.Any;
 
 
