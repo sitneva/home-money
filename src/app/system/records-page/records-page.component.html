@@ -4,7 +4,9 @@
   </h3>
 </div>
 
-<section class="section text-center" *ngIf="!isLoaded">Loading...</section>
+<section class="section text-center" *ngIf="!isLoaded">
+  <hm-loader></hm-loader>
+</section>
 
 <section class="section" *ngIf="isLoaded">
   <div class="row">

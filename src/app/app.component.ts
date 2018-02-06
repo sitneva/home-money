@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {fadeStateTrigger} from './shared/animations/fade.animation';
 
 @Component({
   selector: 'hm-root',

@@ -8,7 +8,9 @@
     </button>
   </div>
 </div>
-<div *ngIf="!isLoaded" class="text-center">Loading...</div>
+<div *ngIf="!isLoaded" class="text-center">
+  <hm-loader></hm-loader>
+</div>
 <div *ngIf="isLoaded">
   <hm-history-chart  [data]="chartData"></hm-history-chart>
   <hm-history-events [categories]="categories" [events]="filteredEvents"></hm-history-events>

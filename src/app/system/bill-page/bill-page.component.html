@@ -9,7 +9,9 @@
   </div>
 </div>
 <section class="section">
-  <div class="row" *ngIf="!isLoaded">Loading...</div>
+  <div class="row" *ngIf="!isLoaded">
+    <hm-loader></hm-loader>
+  </div>
   <div class="row" *ngIf="isLoaded">
     <hm-bill-card [bill]="bill" [currency]="currency"></hm-bill-card>
     <hm-currency-card [currency]="currency"></hm-currency-card>
