@@ -6,8 +6,8 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./currency-card.component.scss']
 })
 export class CurrencyCardComponent {
-
   @Input() currency: any;
   currencies: string[] = ['USD', 'EUR'];
 
+  date: Date = new Date();
 }

@@ -14,13 +14,22 @@ export class BillCardComponent implements OnInit {
 
   dollar: number;
   euro: number;
+  date: Date = new Date();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    const {rates} = this.currency;
-    this.dollar = rates['USD'] * this.bill.value;
-    this.euro = rates['EUR'] * this.bill.value;
+    this.currency.filter((i) => {
+      const t = Object.assign({}, i);
+      console.log(t['ccy']);
+      if (t['ccy'] === 'USD') {
+        this.dollar = t['buy'];
+      }
+      if (t['ccy'] === 'EUR') {
+        this.euro = t['buy'];
+      }
+    });
   }
 
 }

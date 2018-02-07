@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Rx';
 
 import {Bill} from '../shared/models/bill.model';
 import {BillService} from '../shared/services/bill.service';
+import * as moment from 'moment';
 
 
 @Component({
@@ -18,15 +19,18 @@ export class BillPageComponent implements OnInit, OnDestroy {
 
   currency: any;
   bill: Bill;
+  date: Date = new Date();
 
   isLoaded = false;
 
   constructor(private billService: BillService) { }
 
   ngOnInit() {
+    const momentDate = moment(this.date, 'DD.MM.YYYY HH.mm').format('DD.MM.YYYY');
+
     this.sub1 = Observable.combineLatest (
       this.billService.getBill(),
-      this.billService.getCurrency('RUB')
+      this.billService.getCurrency()
     ).subscribe((data: [Bill, any]) => {
         this.bill = data[0];
         this.currency = data[1];
@@ -36,8 +40,10 @@ export class BillPageComponent implements OnInit, OnDestroy {
   }
 
   onRefresh() {
+    const momentDate = moment(this.date, 'DD.MM.YYYY HH.mm').format('DD.MM.YYYY');
+
     this.isLoaded = false;
-    this.sub2 = this.billService.getCurrency(this.currency.base)
+    this.sub2 = this.billService.getCurrency()
         .subscribe((currency: any) => {
           this.currency = currency;
           this.isLoaded = true;
